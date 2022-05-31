@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class TestDrive {
 
     /**
@@ -5,14 +7,33 @@ public class TestDrive {
      */
 
     public static void main(String[] args) {
-        new CityBike("Yellow");
-        new MountainBike("Red");
-        new CityBike("Yellow");
-        new MountainBike("Black");
-        new CityBike("Yellow");
-        new MountainBike("Red");
-        new CityBike("Green");
-        new MountainBike("Red");
+
+        run();
+
+
+
+
+/*
+• Добавление, редактирование и просмотр всех производителей и всех сувениров.
+• Вывести информацию о сувенирах заданного производителя.
+• Вывести информацию о сувенирах, произведенных в заданной стране.
+• Вывести информацию о производителях, чьи цены на сувениры меньше
+        заданной.
+• Вывести информацию по всем производителям и, для каждого производителя вывести
+        информацию о всех сувенирах, которые он производит.
+• Вывести информацию о производителях заданного сувенира, произведенного в заданном году.
+• Для каждого года вывести список сувениров, произведенных в этом году.
+• Удалить заданного производителя и его сувениры.
+*/
+
+    }
+
+    public static void run (){
+
+        Souvenirs souvenirs = new Souvenirs();
+        souvenirs.add();
+
+
 
     }
 }
