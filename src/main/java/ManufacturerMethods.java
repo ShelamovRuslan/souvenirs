@@ -5,9 +5,9 @@ public class ManufacturerMethods {
     public void viewInfoAllManufacturer() {
         new ManufacturerMethods().returnListManufacturer().forEach(manufacturerTemp-> {
             new ManufacturerMethods().infoManufacturer(manufacturerTemp);
-            new Souvenirs().returnListSouvenirs().stream()
+            new SouvenirsMethods().returnListSouvenirs().stream()
                     .filter(x-> x.getManufacturer().getManufacturerName().equals(manufacturerTemp.getManufacturerName()))
-                    .forEach(souvenirs -> new Souvenirs().infoProduct(souvenirs));
+                    .forEach(souvenirs -> new SouvenirsMethods().infoProduct(souvenirs));
         });
     }
     public void viewInfoAllManufacturerSouvenirs () {
@@ -15,8 +15,8 @@ public class ManufacturerMethods {
         manufacturerName = new Console().in("Укажите название производителя");
         Manufacturer manufacturerTemp;
         manufacturerTemp = new ManufacturerMethods().returnObjectManufacturerForManufacturerName(manufacturerName);
-        new Souvenirs().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
-                .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
+        new SouvenirsMethods().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
+                .forEach(souvenirs ->  new SouvenirsMethods().infoProduct(souvenirs));
     }
     public void viewAllManufacturer () {
         ArrayList<Manufacturer> listManufacturerTemp = new ManufacturerMethods().returnListManufacturer();
