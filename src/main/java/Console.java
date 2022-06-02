@@ -26,7 +26,7 @@ public class Console {
                     1) Да
                     2) Нет
                     """);
-        if (str.equals("Да") || str.equals("1")){
+        if (str.equalsIgnoreCase("да") || str.equals("1")){
             return true;
         } else {
             return false;

@@ -75,31 +75,29 @@ public class ManufacturerMethods {
             return listManufacturerTempConcreteManufacturer.get(answer - 1);
         }
     }
+@NonNull
+    public Manufacturer editeManufacture (Manufacturer manufacturer){
+        Console console = new Console();
 
-
-
-
-    public boolean returnTrueIfManufactureInBase (Manufacturer manufacturer){
-        Manufacturer manufacturerTempEquals;
-        if (manufacturer != null) {
-            manufacturerTempEquals = new ManufacturerMethods().returnListManufacturer().stream()
-                    .filter(manufacturer::equals)
-                    .findFirst().get();
-            if (manufacturerTempEquals.equals(manufacturer)){
-
-                infoManufacturer(manufacturer);
-            if (new Console().yesOrNo()) {
-                return true;
-            } else {
-                System.out.println("Производителя с такими параметрами нет в базе");
-                return false;
-            }
-            }
-        }
-            System.out.println("Производителя нет в базе");
-            return false;
+     int answer = Integer.parseInt( console.in ("""
+                Что именно вы желаете изменить:
+                1) Название производителя
+                2) Страну
+                3) Все
+                """));
+        if (answer == 2) {
+            manufacturer.setManufacturerName(console.in("Введите новое название"));
+            return manufacturer;
+        } else if (answer == 1){
+            manufacturer.setCountry(console.in("Укажите страну"));
+            return manufacturer;
+        } else {
+        manufacturer.setCountry(console.in("Укажите страну"));
+        manufacturer.setManufacturerName(console.in("Введите новое название"));
+        return manufacturer;
     }
 
+    }
 
     public ArrayList<Manufacturer> returnListManufacturer () {
         ArrayList<Manufacturer> list = new ArrayList<>();
