@@ -42,8 +42,8 @@ public class Souvenirs implements Serializable {
         return idNameSouvenirs;
     }
 
-    public void add() {
-        //Планирую переделать в билдер
+    public void addNewSouvenir() {
+
         Console console = new Console();
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");

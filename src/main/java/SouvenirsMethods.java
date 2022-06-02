@@ -1,3 +1,5 @@
+import lombok.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +72,7 @@ public class SouvenirsMethods {
                 .filter(s -> s.getCountry().equals(country))
                 .forEach(this::viewManufacturerSouvenirsTemp);
     }
-
+@NonNull
     public void infoProduct(Souvenirs souvenirs) {
         System.out.printf(
                 """

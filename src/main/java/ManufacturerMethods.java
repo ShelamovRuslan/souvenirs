@@ -1,3 +1,5 @@
+import lombok.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,7 +108,7 @@ public class ManufacturerMethods {
         catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> list.add(manufacturer));
         return list;
     }
-
+@NonNull
     public void infoManufacturer (Manufacturer manufacturer){
         System.out.printf("""
                 

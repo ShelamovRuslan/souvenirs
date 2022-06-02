@@ -69,7 +69,7 @@ run();
         Souvenirs souvenirs = new Souvenirs();
         switch(command) {
             case "1":
-                souvenirs.add();
+                souvenirs.addNewSouvenir();
                 break;
             case "2":
 
