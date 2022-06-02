@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManufacturerMethods {
     public void viewInfoAllManufacturer() {
@@ -41,14 +42,41 @@ public class ManufacturerMethods {
             if (new Console().yesOrNo()) {
                 return manufacturerTemp;
             } else {
-                System.out.println("Производителя с такими параметрами нет в базе");
-                return null;
+               return concreteManufacturer(manufacturerName);
             }
         } else {
             System.out.println("Производителя с таким названием нет в базе");
             return null;
         }
     }
+
+    public Manufacturer concreteManufacturer (String nameManufacturer) {
+        int counter = 0;
+        ArrayList<Manufacturer> listManufacturerTempConcreteManufacturer = new ArrayList<>();
+
+        returnListManufacturer().stream()
+                .filter(manufacturer -> manufacturer.getManufacturerName().equals(nameManufacturer))
+                .forEach(listManufacturerTempConcreteManufacturer::add);
+
+
+        for ( ;counter < listManufacturerTempConcreteManufacturer.size(); counter++) {
+                System.out.printf("%s) ", counter + 1);
+                new ManufacturerMethods().infoManufacturer(listManufacturerTempConcreteManufacturer.get(counter));
+        }
+        System.out.printf("%s) Его нет в списке", counter  + 1);
+        Console console = new Console();
+        int answer = Integer.parseInt(console.in("\nВыберите что то из списка"));
+        if (answer == counter + 1){
+            System.out.println("Производителя с таким параметрами нет в базе");
+            return null;
+        } else {
+            return listManufacturerTempConcreteManufacturer.get(answer - 1);
+        }
+    }
+
+
+
+
     public boolean returnTrueIfManufactureInBase (Manufacturer manufacturer){
         Manufacturer manufacturerTempEquals;
         if (manufacturer != null) {

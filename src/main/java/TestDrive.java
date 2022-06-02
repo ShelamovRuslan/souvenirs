@@ -10,7 +10,7 @@ public class TestDrive {
 
 
 
-for (int i = 1; i < 151; i++) {
+for (int i = 0; i < 10; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -20,8 +20,9 @@ for (int i = 1; i < 151; i++) {
     catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
 
 }
-        new Manufacturer().addNewManufacture();
-        System.out.println(new ManufacturerMethods().returnTrueIfManufactureInBase(new Manufacturer("10","10", "10")));
+run();
+       /* new Manufacturer().addNewManufacture();
+        System.out.println(new ManufacturerMethods().returnTrueIfManufactureInBase(new Manufacturer("10","10", "10")));*/
 
 
 }
