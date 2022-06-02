@@ -12,7 +12,7 @@ public class TestDrive {
 
 
 
-for (int i = 0; i < 10; i++) {
+for (int i = 10; i < 20; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -109,8 +109,8 @@ run();
                 new SouvenirsMethods().viewAllSouvenirsGroupYear();
                 break;
             case "11":
-                Manufacturer manufacturerTempDelete = new Manufacturer();
-                manufacturerTempDelete = new ManufacturerMethods().returnObjectManufacturerForManufacturerName(
+                Manufacturer manufacturerTempDelete =
+                new ManufacturerMethods().returnObjectManufacturerForManufacturerName(
                      console.in("Введите название производителя")
                 );
                 if (manufacturerTempDelete != null) {
@@ -122,7 +122,7 @@ run();
                 manufacturer.addNewManufacture(); // Планирую переделать в билдер
                 break;
             case "13":
-           /*        Manufacturer manufacturerTempEdite =
+           Manufacturer manufacturerTempEdite =
                  new ManufacturerMethods()
                          .returnObjectManufacturerForManufacturerName(
                          console.in("Введите имя производителя которого желаете отредактировать"));
@@ -134,7 +134,7 @@ run();
                 new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
                 } else {
                     System.out.println("По вашему запросу ничего не найдено");
-                }*/
+                }
                 break;
             case "14":
                 break;
