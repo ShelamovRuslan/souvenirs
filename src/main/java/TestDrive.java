@@ -10,7 +10,7 @@ public class TestDrive {
 
 
 
-for (int i = 3; i < 13; i++) {
+for (int i = 10; i < 15; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -100,7 +100,7 @@ for (int i = 3; i < 13; i++) {
                 break;
             case "11":
                 Manufacturer manufacturerTempDelete = new Manufacturer();
-                manufacturerTempDelete = manufacturerTempDelete.checkManufacturer(
+                manufacturerTempDelete = manufacturerTempDelete.returnObjectManufacturerForManufacturerName(
                      console.in("Введите название производителя")
                 );
                 new CatalogSouvenirs().deleteManufactureSouvenirs(manufacturerTempDelete);

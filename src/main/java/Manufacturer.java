@@ -37,7 +37,7 @@ public class Manufacturer implements Serializable {
         String manufacturerName;
         manufacturerName = new Console().in("Укажите название производителя");
         Manufacturer manufacturerTemp;
-        manufacturerTemp = new Manufacturer().checkManufacturer(manufacturerName);
+        manufacturerTemp = new Manufacturer().returnObjectManufacturerForManufacturerName(manufacturerName);
         new Souvenirs().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
                 .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
     }
@@ -54,7 +54,7 @@ public class Manufacturer implements Serializable {
             if (new Console().yesOrNo()) {
                 return manufacturerTemp;
             } else {
-                System.out.println("Производителя с таким названием нет в базе");
+                System.out.println("Производителя с такими параметрами нет в базе");
                 return null;
             }
         } else {
@@ -82,23 +82,6 @@ public class Manufacturer implements Serializable {
         listManufacturerTemp.forEach(this::infoManufacturer);
     }
 
-public Manufacturer checkManufacturer (String manufacturerName) {
-    Manufacturer manufacturerTemp;
-    if (returnAllManufactureName().contains(manufacturerName)){
-    manufacturerTemp = returnListManufacturer().stream()
-            .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
-            .findFirst()
-            .get();
-    } else {
-       manufacturerTemp = addNewManufacture();
-    }
-    infoManufacturer(manufacturerTemp);
-    if (new Console().yesOrNo()) {
-        return manufacturerTemp;
-    } else {
-       return addNewManufacture();
-    }
-}
 
     public ArrayList<Manufacturer> returnListManufacturer () {
         ArrayList<Manufacturer> list = new ArrayList<>();

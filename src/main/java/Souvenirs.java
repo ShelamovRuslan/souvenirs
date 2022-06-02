@@ -31,7 +31,7 @@ public class Souvenirs implements Serializable {
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");
         this.price = Double.parseDouble(console.in("Укажите стоимость"));
-        this.manufacturer = new Manufacturer().checkManufacturer(console.in("Введите название производителя"));
+        this.manufacturer = new Manufacturer().returnObjectManufacturerForManufacturerName(console.in("Введите название производителя"));
         this.idNameSouvenirs = this.getProductName();
         CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
         if (catalogSouvenirs.getCatalogSouvenirs().containsKey(this.getProductName())){
