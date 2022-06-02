@@ -73,8 +73,8 @@ public class SouvenirsMethods {
                 .filter(s -> s.getCountry().equals(country))
                 .forEach(this::viewManufacturerSouvenirsTemp);
     }
-@NonNull
-    public void infoProduct(Souvenirs souvenirs) {
+
+    public void infoProduct(@NonNull Souvenirs souvenirs) {
         System.out.printf(
                 """
                         
