@@ -119,7 +119,7 @@ run();
                 }
                 break;
             case "12":
-                manufacturer.addNewManufacture(); // Планирую переделать в билдер
+                manufacturer.addNewManufacture();
                 break;
             case "13":
            Manufacturer manufacturerTempEdite =
@@ -128,9 +128,9 @@ run();
                          console.in("Введите имя производителя которого желаете отредактировать"));
                 if (manufacturerTempEdite != null){
                 manufacturerTempEdite = new ManufacturerMethods().editeManufacture(manufacturerTempEdite);
-                new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite); // ВНЕСТИ ИЗМЕНЕНИЯ СРОЧНО
+                new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
                 } else {
-                    System.out.println("По вашему запросу ничего не найдено");
+                    break;
                 }
                 break;
             case "14":
