@@ -86,10 +86,10 @@ public class ManufacturerMethods {
                 3) Все
                 """));
         if (answer == 2) {
-            manufacturer.setManufacturerName(console.in("Введите новое название"));
+            manufacturer.setCountry(console.in("Укажите страну"));
             return manufacturer;
         } else if (answer == 1){
-            manufacturer.setCountry(console.in("Укажите страну"));
+            manufacturer.setManufacturerName(console.in("Введите новое название"));
             return manufacturer;
         } else {
         manufacturer.setCountry(console.in("Укажите страну"));

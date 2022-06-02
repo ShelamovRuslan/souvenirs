@@ -13,7 +13,7 @@ public class Manufacturer implements Serializable {
 
     }
     public Manufacturer(String manufacturerName, String country) {
-        this.idManufacturer = String.valueOf(new CatalogManufacturer().getCatalogManufacturer().size());
+        this.idManufacturer = String.valueOf(new CatalogManufacturer().getCatalogManufacturer().size() + 1000);
         this.manufacturerName = manufacturerName;
         this.country = country;
     }

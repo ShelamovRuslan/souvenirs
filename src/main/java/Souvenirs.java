@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Random;
 
 public class Souvenirs implements Serializable {
 
@@ -31,7 +32,7 @@ public class Souvenirs implements Serializable {
     }
 
     public Souvenirs(String productName, Manufacturer manufacturer, double price, String productionYear) {
-        this.idNameSouvenirs = String.valueOf(new CatalogSouvenirs().getCatalogSouvenirs().size());
+        this.idNameSouvenirs = String.valueOf(new CatalogSouvenirs().getCatalogSouvenirs().size() + 1000);
         this.productName = productName;
         this.manufacturer = manufacturer;
         this.price = price;

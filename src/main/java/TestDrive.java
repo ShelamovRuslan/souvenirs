@@ -9,10 +9,10 @@ public class TestDrive {
     public static void main(String[] args) {
 
 
-  CatalogManufacturer dfgdfg = new CatalogManufacturer();
+//  CatalogManufacturer dfgdfg = new CatalogManufacturer();
 
 
-for (int i = 10; i < 20; i++) {
+/*for (int i = 1; i < 11; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -21,7 +21,7 @@ for (int i = 10; i < 20; i++) {
     Souvenirs souvenirs = new Souvenirs(i + "", manufacturer,  i, i + "");
     catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
 
-}
+}*/
 run();
        /* new Manufacturer().addNewManufacture();
         System.out.println(new ManufacturerMethods().returnTrueIfManufactureInBase(new Manufacturer("10","10", "10")));*/
