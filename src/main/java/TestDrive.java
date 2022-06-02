@@ -87,7 +87,7 @@ for (int i = 10; i < 15; i++) {
                 souvenirs.price();
                 break;
             case "8":
-                manufacturer.viewInfoAllManufacturer();
+                new ManufacturerMethods().viewInfoAllManufacturer();
                 break;
             case "9":
 

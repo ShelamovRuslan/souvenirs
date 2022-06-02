@@ -24,14 +24,7 @@ public class Manufacturer implements Serializable {
     public String getCountry() {
         return country;
     }
-    public void viewInfoAllManufacturer() {
-        returnListManufacturer().forEach(manufacturerTemp-> {
-            infoManufacturer(manufacturerTemp);
-            new Souvenirs().returnListSouvenirs().stream()
-                    .filter(x-> x.getManufacturer().getManufacturerName().equals(manufacturerTemp.getManufacturerName()))
-                    .forEach(souvenirs -> new Souvenirs().infoProduct(souvenirs));
-        });
-    }
+
 
     public void viewInfoAllManufacturerSouvenirs () {
         String manufacturerName;
