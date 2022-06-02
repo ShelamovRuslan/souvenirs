@@ -30,8 +30,8 @@ public class Souvenirs implements Serializable {
         return manufacturer;
     }
 
-    public Souvenirs(String idNameSouvenirs, String productName, Manufacturer manufacturer, double price, String productionYear) {
-        this.idNameSouvenirs = idNameSouvenirs;
+    public Souvenirs(String productName, Manufacturer manufacturer, double price, String productionYear) {
+        this.idNameSouvenirs = String.valueOf(new CatalogSouvenirs().getCatalogSouvenirs().size());
         this.productName = productName;
         this.manufacturer = manufacturer;
         this.price = price;
@@ -48,18 +48,16 @@ public class Souvenirs implements Serializable {
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");
         this.price = Double.parseDouble(console.in("Укажите стоимость"));
-        this.manufacturer = new ManufacturerMethods()
+        Manufacturer manufacturerTempCreate = new ManufacturerMethods()
                 .returnObjectManufacturerForManufacturerName(
                         console.in("Введите название производителя"));
-        this.idNameSouvenirs = this.getProductName();
-        CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
-        if (catalogSouvenirs.getCatalogSouvenirs().containsKey(this.getProductName())) {
-            int counter = 1;
-            while (catalogSouvenirs.getCatalogSouvenirs().containsKey(idNameSouvenirs)) {
-                idNameSouvenirs = this.getProductName() + counter;
-                counter++;
-            }
+        if (manufacturerTempCreate != null){
+            this.manufacturer = manufacturerTempCreate;
+        } else {
+           this.manufacturer = new Manufacturer().addNewManufacture();
         }
+        CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
+        this.idNameSouvenirs = String.valueOf(catalogSouvenirs.getCatalogSouvenirs().size());
         catalogSouvenirs.addElementCatalogSouvenirs(this);
     }
 

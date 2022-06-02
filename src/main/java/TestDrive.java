@@ -12,13 +12,13 @@ public class TestDrive {
 
 
 
-for (int i = 10; i < 20; i++) {
+for (int i = 0; i < 10; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
-    Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
+    Manufacturer manufacturer = new Manufacturer( i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
 
     CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
-    Souvenirs souvenirs = new Souvenirs(i + "",i + "", manufacturer, i, i + "");
+    Souvenirs souvenirs = new Souvenirs(i + "", manufacturer,  i, i + "");
     catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
 
 }

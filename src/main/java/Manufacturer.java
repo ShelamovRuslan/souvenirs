@@ -12,8 +12,8 @@ public class Manufacturer implements Serializable {
     public Manufacturer () {
 
     }
-    public Manufacturer(String idManufacturer, String manufacturerName, String country) {
-        this.idManufacturer = idManufacturer;
+    public Manufacturer(String manufacturerName, String country) {
+        this.idManufacturer = String.valueOf(new CatalogManufacturer().getCatalogManufacturer().size());
         this.manufacturerName = manufacturerName;
         this.country = country;
     }
@@ -30,13 +30,21 @@ public class Manufacturer implements Serializable {
         return country;
     }
 
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public Manufacturer addNewManufacture () {
         // Планирую переделать в билдер
         System.out.println("Давайте добавим нового производителя в базу");
         Console console = new Console();
         this.manufacturerName = console.in("Введите название производителя");
         this.country = console.in("Введите страну производителя");
-        this.idManufacturer = manufacturerName.toLowerCase() + country.toLowerCase();
+        this.idManufacturer = String.valueOf(new CatalogManufacturer().getCatalogManufacturer().size());
         new CatalogManufacturer().addElementCatalogManufacturer(this);
         return this;
 
