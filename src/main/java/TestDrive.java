@@ -122,14 +122,19 @@ run();
                 manufacturer.addNewManufacture(); // Планирую переделать в билдер
                 break;
             case "13":
-                Manufacturer manufacturerTempEdite =
+           /*        Manufacturer manufacturerTempEdite =
                  new ManufacturerMethods()
                          .returnObjectManufacturerForManufacturerName(
                          console.in("Введите имя производителя которого желаете отредактировать"));
                 // Временное решение, уже переписываю
+
+                if (manufacturerTempEdite != null){
                 new CatalogManufacturer().deleteManufacture(manufacturerTempEdite);
                 manufacturerTempEdite = new Manufacturer().addNewManufacture();
                 new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
+                } else {
+                    System.out.println("По вашему запросу ничего не найдено");
+                }*/
                 break;
             case "14":
                 break;
