@@ -46,7 +46,7 @@ for (int i = 10; i < 15; i++) {
 
         System.out.println("""
                 1 Добавление сувенира
-                2 редактирование НАПИСАТЬ МЕТОД СРОЧНО
+                2 редактирование сувенира
                 3 просмотр всех производителей
                 4 просмотр всех сувениров
                 5 Вывести информацию о сувенирах заданного производителя
@@ -55,7 +55,7 @@ for (int i = 10; i < 15; i++) {
                 8 Вывести информацию по всем производителям и их сувенирам
                 9 Вывести информацию о производителях заданного сувенира, произведенного в заданном году.
                 10 Для каждого года вывести список сувениров, произведенных в этом году.
-                11 Удалить заданного производителя и его сувениры.  НАПИСАТЬ МЕТОД СРОЧНО
+                11 Удалить заданного производителя и его сувениры. 
                 12 Добавление нового производителя
                 13 
                 14
@@ -78,7 +78,7 @@ for (int i = 10; i < 15; i++) {
                 souvenirs.view();
                 break;
             case "5":
-                manufacturer.viewInfoAllManufacturerSouvenirs();
+                new ManufacturerMethods().viewInfoAllManufacturerSouvenirs();
                 break;
             case "6":
                 souvenirs.country();
@@ -103,11 +103,13 @@ for (int i = 10; i < 15; i++) {
                 manufacturerTempDelete = manufacturerTempDelete.returnObjectManufacturerForManufacturerName(
                      console.in("Введите название производителя")
                 );
-                new CatalogSouvenirs().deleteManufactureSouvenirs(manufacturerTempDelete);
-                new CatalogManufacturer().deleteManufacture(manufacturerTempDelete);
+                if (manufacturerTempDelete != null) {
+                    new CatalogSouvenirs().deleteManufactureSouvenirs(manufacturerTempDelete);
+                    new CatalogManufacturer().deleteManufacture(manufacturerTempDelete);
+                }
                 break;
             case "12":
-                manufacturer.addNewManufacture();
+                manufacturer.addNewManufacture(); // Планирую переделать в билдер
                 break;
             case "Закрыть":
                 break;

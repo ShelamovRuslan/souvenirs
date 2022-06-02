@@ -26,14 +26,7 @@ public class Manufacturer implements Serializable {
     }
 
 
-    public void viewInfoAllManufacturerSouvenirs () {
-        String manufacturerName;
-        manufacturerName = new Console().in("Укажите название производителя");
-        Manufacturer manufacturerTemp;
-        manufacturerTemp = new Manufacturer().returnObjectManufacturerForManufacturerName(manufacturerName);
-        new Souvenirs().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
-                .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
-    }
+
 
 
     public Manufacturer returnObjectManufacturerForManufacturerName (String manufacturerName){
@@ -57,6 +50,7 @@ public class Manufacturer implements Serializable {
     }
 
     public Manufacturer addNewManufacture () {
+        // Планирую переделать в билдер
         System.out.println("Давайте добавим нового производителя в базу");
         Console console = new Console();
         this.manufacturerName = console.in("Введите название производителя");
@@ -64,6 +58,7 @@ public class Manufacturer implements Serializable {
         this.idManufacturer = manufacturerName.toLowerCase() + country.toLowerCase();
         new CatalogManufacturer().addElementCatalogManufacturer(this);
         return this;
+
     }
 
     public void edit () {
