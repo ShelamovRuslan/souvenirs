@@ -38,9 +38,29 @@ public class Manufacturer implements Serializable {
         manufacturerName = new Console().in("Укажите название производителя");
         Manufacturer manufacturerTemp;
         manufacturerTemp = new Manufacturer().checkManufacturer(manufacturerName);
-        new Souvenirs().returnListSouvenirs().stream()
-                .filter(s -> s.getManufacturer().equals(manufacturerTemp))
+        new Souvenirs().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
                 .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
+    }
+
+
+    public Manufacturer returnObjectManufacturerForManufacturerName (String manufacturerName){
+        Manufacturer manufacturerTemp;
+        if (returnAllManufactureName().contains(manufacturerName)){
+            manufacturerTemp = returnListManufacturer().stream()
+                    .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
+                    .findFirst()
+                    .get();
+            infoManufacturer(manufacturerTemp);
+            if (new Console().yesOrNo()) {
+                return manufacturerTemp;
+            } else {
+                System.out.println("Производителя с таким названием нет в базе");
+                return null;
+            }
+        } else {
+            System.out.println("Производителя с таким названием нет в базе");
+            return null;
+        }
     }
 
     public Manufacturer addNewManufacture () {

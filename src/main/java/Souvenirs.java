@@ -128,7 +128,13 @@ public class Souvenirs implements Serializable {
                 .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
     }
 
-
+    public ArrayList <Souvenirs> returnArrayListSouvenirsConcreteManufacture (Manufacturer manufacturer){
+        ArrayList<Souvenirs> arrayListSouvenirsTemp = new ArrayList<>();
+        new Souvenirs().returnListSouvenirs().stream()
+                .filter(souvenirs -> souvenirs.getManufacturer().equals(manufacturer))
+                .forEach(arrayListSouvenirsTemp::add);
+        return arrayListSouvenirsTemp;
+    }
 
     public void setContext() {
 
