@@ -75,8 +75,8 @@ public class ManufacturerMethods {
             return listManufacturerTempConcreteManufacturer.get(answer - 1);
         }
     }
-@NonNull
-    public Manufacturer editeManufacture (Manufacturer manufacturer){
+
+    public Manufacturer editeManufacture (@NonNull Manufacturer manufacturer){
         Console console = new Console();
 
      int answer = Integer.parseInt( console.in ("""
@@ -105,8 +105,8 @@ public class ManufacturerMethods {
         catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> list.add(manufacturer));
         return list;
     }
-@NonNull
-    public void infoManufacturer (Manufacturer manufacturer){
+
+    public void infoManufacturer (@NonNull Manufacturer manufacturer){
         System.out.printf("""
                 
                 Название производителя: %s

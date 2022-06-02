@@ -72,7 +72,13 @@ run();
                 souvenirs.addNewSouvenir();
                 break;
             case "2":
-
+                SouvenirsMethods souvenirsMethodTempEdite = new SouvenirsMethods();
+                Souvenirs souvenirsTemp = souvenirsMethodTempEdite
+                        .searchConcreteSouvenir(console.in("Введите название сувенира"));
+                if (souvenirsTemp != null) {
+                    souvenirsTemp = souvenirsMethodTempEdite.editeSouvenirs(souvenirsTemp);
+                   new CatalogSouvenirs().addElementCatalogSouvenirs(souvenirsTemp);
+                }
                 break;
             case "3":
                 new ManufacturerMethods().viewAllManufacturer();

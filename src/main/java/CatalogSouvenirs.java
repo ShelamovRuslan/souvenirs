@@ -25,7 +25,11 @@ public class CatalogSouvenirs extends Catalog implements Serializable {
 
     public void addElementCatalogSouvenirs (Souvenirs souvenirsTemp) {
         restore();
-        this.catalogSouvenirs.put(souvenirsTemp.getIdNameSouvenirs(), souvenirsTemp);
+        if (this.catalogSouvenirs.containsKey(souvenirsTemp.getIdNameSouvenirs())) {
+            this.catalogSouvenirs.replace(souvenirsTemp.getIdNameSouvenirs(), souvenirsTemp);
+        } else {
+            this.catalogSouvenirs.put(souvenirsTemp.getIdNameSouvenirs(), souvenirsTemp);
+        }
         save();
     }
 

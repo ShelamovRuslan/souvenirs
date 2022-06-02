@@ -19,6 +19,22 @@ public class Souvenirs implements Serializable {
 
     }
 
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setProductionYear(String productionYear) {
+        this.productionYear = productionYear;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -42,6 +58,7 @@ public class Souvenirs implements Serializable {
     public String getIdNameSouvenirs() {
         return idNameSouvenirs;
     }
+
 
     public void addNewSouvenir() {
 
