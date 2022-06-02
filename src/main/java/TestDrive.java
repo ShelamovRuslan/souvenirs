@@ -10,7 +10,7 @@ public class TestDrive {
 
 
 
-for (int i = 0; i < 10; i++) {
+for (int i = 3; i < 13; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -56,8 +56,11 @@ for (int i = 0; i < 10; i++) {
                 9 Вывести информацию о производителях заданного сувенира, произведенного в заданном году.
                 10 Для каждого года вывести список сувениров, произведенных в этом году.
                 11 Удалить заданного производителя и его сувениры.  НАПИСАТЬ МЕТОД СРОЧНО
-                12 Закрыть
+                12 Добавление нового производителя
+                13 
+                14
                 """);
+        Console console = new Console();
         Manufacturer manufacturer = new Manufacturer();
         String command = new Console().in("Что сделать?");
         Souvenirs souvenirs = new Souvenirs();
@@ -87,7 +90,7 @@ for (int i = 0; i < 10; i++) {
                 manufacturer.viewInfoAllManufacturer();
                 break;
             case "9":
-                Console console = new Console();
+
                 souvenirs.viewSouvenirsYear(
                         console.in("Введите название сувенира"),
                         console.in("Укажите год производства"));
@@ -96,10 +99,15 @@ for (int i = 0; i < 10; i++) {
                 souvenirs.viewAllSouvenirsGroupYear();
                 break;
             case "11":
-               // Удалить заданного производителя и его сувениры.
+                Manufacturer manufacturerTempDelete = new Manufacturer();
+                manufacturerTempDelete = manufacturerTempDelete.checkManufacturer(
+                     console.in("Введите название производителя")
+                );
+                new CatalogSouvenirs().deleteManufactureSouvenirs(manufacturerTempDelete);
+                new CatalogManufacturer().deleteManufacture(manufacturerTempDelete);
                 break;
             case "12":
-              //  Закрыть
+                manufacturer.addNewManufacture();
                 break;
             case "Закрыть":
                 break;

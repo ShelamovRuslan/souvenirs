@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class CatalogSouvenirs extends Catalog implements Serializable {
     HashMap<String, Souvenirs> catalogSouvenirs;
@@ -28,5 +29,10 @@ public class CatalogSouvenirs extends Catalog implements Serializable {
         save();
     }
 
+    public void deleteManufactureSouvenirs (Manufacturer manufacturer) {
+        restore();
+
+        save();
+    }
 
 }

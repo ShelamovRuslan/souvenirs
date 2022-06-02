@@ -44,7 +44,7 @@ public class Manufacturer implements Serializable {
     }
 
     public Manufacturer addNewManufacture () {
-        System.out.println("Такого производителя в базе не найдено, давайте добавим");
+        System.out.println("Давайте добавим нового производителя в базу");
         Console console = new Console();
         this.manufacturerName = console.in("Введите название производителя");
         this.country = console.in("Введите страну производителя");

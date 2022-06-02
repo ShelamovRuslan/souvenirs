@@ -22,4 +22,10 @@ public class CatalogManufacturer extends Catalog implements Serializable {
         this.catalogManufacturer.put(manufacturer.getIdManufacturer(), manufacturer);
         save();
     }
+
+    public void deleteManufacture (Manufacturer manufacturer) {
+      restore();
+      this.catalogManufacturer.remove(manufacturer.getIdManufacturer());
+      save();
+    }
 }
