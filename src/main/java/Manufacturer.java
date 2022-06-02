@@ -1,9 +1,9 @@
 import java.io.Serializable;
 import java.util.*;
-import java.util.stream.Stream;
 
 
 public class Manufacturer implements Serializable {
+
 
     private String idManufacturer;
     private String manufacturerName;
@@ -21,50 +21,65 @@ public class Manufacturer implements Serializable {
 
     }
 
-    public String add () {
-        CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
-        catalogManufacturer.restore();
+    public String getCountry() {
+        return country;
+    }
+    public void viewInfoAllManufacturer() {
+        returnListManufacturer().forEach(manufacturerTemp-> {
+            infoManufacturer(manufacturerTemp);
+            new Souvenirs().returnListSouvenirs().stream()
+                    .filter(x-> x.getManufacturer().getManufacturerName().equals(manufacturerTemp.getManufacturerName()))
+                    .forEach(souvenirs -> new Souvenirs().infoProduct(souvenirs));
+        });
+    }
+
+    public void viewInfoAllManufacturerSouvenirs () {
+        String manufacturerName;
+        manufacturerName = new Console().in("Укажите название производителя");
+        Manufacturer manufacturerTemp;
+        manufacturerTemp = new Manufacturer().checkManufacturer(manufacturerName);
+        new Souvenirs().returnListSouvenirs().stream()
+                .filter(s -> s.getManufacturer().equals(manufacturerTemp))
+                .forEach(souvenirs ->  new Souvenirs().infoProduct(souvenirs));
+    }
+
+    public Manufacturer addNewManufacture () {
+        System.out.println("Такого производителя в базе не найдено, давайте добавим");
         Console console = new Console();
-        if (this.manufacturerName == null || this.manufacturerName.equals("")){
-            this.manufacturerName = console.in("Введите название производителя");
-        }
+        this.manufacturerName = console.in("Введите название производителя");
         this.country = console.in("Введите страну производителя");
         this.idManufacturer = manufacturerName.toLowerCase() + country.toLowerCase();
-        catalogManufacturer.getCatalogManufacturer().put(this.idManufacturer ,this);
-        catalogManufacturer.save();
-        return this.idManufacturer;
+        new CatalogManufacturer().addElementCatalogManufacturer(this);
+        return this;
     }
 
     public void edit () {
 
     }
 
-    public void view () {
-
+    public void viewAllManufacturer () {
+        ArrayList<Manufacturer> listManufacturerTemp = returnListManufacturer();
+        listManufacturerTemp.forEach(this::infoManufacturer);
     }
 
-
-    public String check(String manufacturerName) {
-        this.manufacturerName = manufacturerName;
-        if(!returnListManufacturer().stream().filter(s -> s.getManufacturerName().equals(manufacturerName)).toList().isEmpty()) {
-            Console console = new Console();
-            String str = console.in("""
-                    Вы желаете указать этого производителя?
-                    Да
-                    Нет
-                    """);
-            if (Objects.equals(str, "Да")){
-                return returnListManufacturer().stream().filter(s -> s.getManufacturerName().equals(manufacturerName)).findFirst().get().getIdManufacturer();
-            } else {
-                add();
-                return this.idManufacturer;
-            }
-
-        } else {
-            add();
-            return this.idManufacturer;
-        }
+public Manufacturer checkManufacturer (String manufacturerName) {
+    Manufacturer manufacturerTemp;
+    if (returnAllManufactureName().contains(manufacturerName)){
+    manufacturerTemp = returnListManufacturer().stream()
+            .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
+            .findFirst()
+            .get();
+    } else {
+       manufacturerTemp = addNewManufacture();
     }
+    infoManufacturer(manufacturerTemp);
+    if (new Console().yesOrNo()) {
+        return manufacturerTemp;
+    } else {
+       return addNewManufacture();
+    }
+}
+
     public ArrayList<Manufacturer> returnListManufacturer () {
         ArrayList<Manufacturer> list = new ArrayList<>();
         CatalogManufacturer catalogManufacturerTemp = new CatalogManufacturer();
@@ -72,4 +87,45 @@ public class Manufacturer implements Serializable {
         catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> list.add(manufacturer));
         return list;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return Objects.equals(idManufacturer, that.idManufacturer) && Objects.equals(manufacturerName, that.manufacturerName) && Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idManufacturer, manufacturerName, country);
+    }
+
+    public Manufacturer(String idManufacturer, String manufacturerName, String country) {
+        this.idManufacturer = idManufacturer;
+        this.manufacturerName = manufacturerName;
+        this.country = country;
+    }
+
+    public void infoManufacturer (Manufacturer manufacturer){
+        System.out.printf("""
+                
+                Название производителя: %s
+                Страна: %s
+                
+                """,
+                manufacturer.getManufacturerName(),
+                manufacturer.getCountry()
+        );
+    }
+
+    public ArrayList<String> returnAllManufactureName (){
+        ArrayList<String> listTemp = new ArrayList<>();
+        returnListManufacturer().forEach(
+           manufacturer -> listTemp.add(manufacturer.getManufacturerName())
+        );
+        return listTemp;
+    }
+
+
 }

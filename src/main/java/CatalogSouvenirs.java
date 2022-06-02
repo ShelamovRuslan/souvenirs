@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CatalogSouvenirs extends Catalog implements Serializable {
@@ -21,7 +22,11 @@ public class CatalogSouvenirs extends Catalog implements Serializable {
 
     }
 
-    public void addElementCatalogSouvenirs (Souvenirs souvenirs) {
-        this.catalogSouvenirs.put(souvenirs.getProductName(), souvenirs);
+    public void addElementCatalogSouvenirs (Souvenirs souvenirsTemp) {
+        restore();
+        this.catalogSouvenirs.put(souvenirsTemp.getIdNameSouvenirs(), souvenirsTemp);
+        save();
     }
+
+
 }

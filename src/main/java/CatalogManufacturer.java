@@ -18,6 +18,8 @@ public class CatalogManufacturer extends Catalog implements Serializable {
         }
     }
     public void addElementCatalogManufacturer (Manufacturer manufacturer) {
+        restore();
         this.catalogManufacturer.put(manufacturer.getIdManufacturer(), manufacturer);
+        save();
     }
 }

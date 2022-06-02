@@ -18,4 +18,18 @@ public class Console {
             }
         }
     }
+
+    public boolean yesOrNo () {
+        Console console = new Console();
+        String str = console.in("""                    
+                    Все верно?
+                    1) Да
+                    2) Нет
+                    """);
+        if (str.equals("Да") || str.equals("1")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
