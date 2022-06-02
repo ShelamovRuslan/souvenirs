@@ -95,8 +95,7 @@ public class ManufacturerMethods {
         manufacturer.setCountry(console.in("Укажите страну"));
         manufacturer.setManufacturerName(console.in("Введите новое название"));
         return manufacturer;
-    }
-
+        }
     }
 
     public ArrayList<Manufacturer> returnListManufacturer () {

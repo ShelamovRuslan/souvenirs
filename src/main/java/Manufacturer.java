@@ -55,11 +55,11 @@ public class Manufacturer implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Manufacturer that = (Manufacturer) o;
-        return Objects.equals(idManufacturer, that.idManufacturer) && Objects.equals(manufacturerName, that.manufacturerName) && Objects.equals(country, that.country);
+        return Objects.equals(manufacturerName, that.manufacturerName) && Objects.equals(country, that.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idManufacturer, manufacturerName, country);
+        return Objects.hash(manufacturerName, country);
     }
 }

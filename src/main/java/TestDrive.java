@@ -9,10 +9,10 @@ public class TestDrive {
     public static void main(String[] args) {
 
 
+  CatalogManufacturer dfgdfg = new CatalogManufacturer();
 
 
-
-for (int i = 0; i < 10; i++) {
+for (int i = 10; i < 20; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -126,12 +126,9 @@ run();
                  new ManufacturerMethods()
                          .returnObjectManufacturerForManufacturerName(
                          console.in("Введите имя производителя которого желаете отредактировать"));
-                // Временное решение, уже переписываю
-
                 if (manufacturerTempEdite != null){
-                new CatalogManufacturer().deleteManufacture(manufacturerTempEdite);
-                manufacturerTempEdite = new Manufacturer().addNewManufacture();
-                new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
+                manufacturerTempEdite = new ManufacturerMethods().editeManufacture(manufacturerTempEdite);
+                new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite); // ВНЕСТИ ИЗМЕНЕНИЯ СРОЧНО
                 } else {
                     System.out.println("По вашему запросу ничего не найдено");
                 }
