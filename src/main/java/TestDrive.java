@@ -57,8 +57,8 @@ for (int i = 10; i < 15; i++) {
                 10 Для каждого года вывести список сувениров, произведенных в этом году.
                 11 Удалить заданного производителя и его сувениры. 
                 12 Добавление нового производителя
-                13 
-                14
+                13 редактирование производителя
+                14 Закрыть
                 """);
         Console console = new Console();
         Manufacturer manufacturer = new Manufacturer();
@@ -111,7 +111,17 @@ for (int i = 10; i < 15; i++) {
             case "12":
                 manufacturer.addNewManufacture(); // Планирую переделать в билдер
                 break;
-            case "Закрыть":
+            case "13":
+                Manufacturer manufacturerTempEdite =
+                 new Manufacturer()
+                         .returnObjectManufacturerForManufacturerName(
+                         console.in("Введите имя производителя которого желаете отредактировать"));
+                // Временное решение, уже переписываю
+                new CatalogManufacturer().deleteManufacture(manufacturerTempEdite);
+                manufacturerTempEdite = new Manufacturer().addNewManufacture();
+                new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
+                break;
+            case "14":
                 break;
         }
 
