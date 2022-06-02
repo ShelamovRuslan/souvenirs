@@ -10,7 +10,7 @@ public class TestDrive {
 
 
 
-for (int i = 10; i < 15; i++) {
+for (int i = 1; i < 151; i++) {
     CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
     Manufacturer manufacturer = new Manufacturer( i + "",i + "", i + "");
     catalogManufacturer.addElementCatalogManufacturer(manufacturer);
@@ -20,10 +20,10 @@ for (int i = 10; i < 15; i++) {
     catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
 
 }
+        new Manufacturer().addNewManufacture();
+        System.out.println(new ManufacturerMethods().returnTrueIfManufactureInBase(new Manufacturer("10","10", "10")));
 
 
-
-    run();
 }
 
 
@@ -72,7 +72,7 @@ for (int i = 10; i < 15; i++) {
 
                 break;
             case "3":
-                manufacturer.viewAllManufacturer();
+                new ManufacturerMethods().viewAllManufacturer();
                 break;
             case "4":
                 souvenirs.view();
@@ -100,7 +100,7 @@ for (int i = 10; i < 15; i++) {
                 break;
             case "11":
                 Manufacturer manufacturerTempDelete = new Manufacturer();
-                manufacturerTempDelete = manufacturerTempDelete.returnObjectManufacturerForManufacturerName(
+                manufacturerTempDelete = new ManufacturerMethods().returnObjectManufacturerForManufacturerName(
                      console.in("Введите название производителя")
                 );
                 if (manufacturerTempDelete != null) {
@@ -113,7 +113,7 @@ for (int i = 10; i < 15; i++) {
                 break;
             case "13":
                 Manufacturer manufacturerTempEdite =
-                 new Manufacturer()
+                 new ManufacturerMethods()
                          .returnObjectManufacturerForManufacturerName(
                          console.in("Введите имя производителя которого желаете отредактировать"));
                 // Временное решение, уже переписываю

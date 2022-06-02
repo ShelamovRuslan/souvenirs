@@ -9,6 +9,15 @@ public class Manufacturer implements Serializable {
     private String manufacturerName;
     private String country;
 
+    public Manufacturer () {
+
+    }
+    public Manufacturer(String idManufacturer, String manufacturerName, String country) {
+        this.idManufacturer = idManufacturer;
+        this.manufacturerName = manufacturerName;
+        this.country = country;
+    }
+
     public String getManufacturerName() {
         return manufacturerName;
     }
@@ -17,36 +26,8 @@ public class Manufacturer implements Serializable {
         return idManufacturer;
     }
 
-    public Manufacturer () {
-
-    }
-
     public String getCountry() {
         return country;
-    }
-
-
-
-
-
-    public Manufacturer returnObjectManufacturerForManufacturerName (String manufacturerName){
-        Manufacturer manufacturerTemp;
-        if (returnAllManufactureName().contains(manufacturerName)){
-            manufacturerTemp = returnListManufacturer().stream()
-                    .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
-                    .findFirst()
-                    .get();
-            infoManufacturer(manufacturerTemp);
-            if (new Console().yesOrNo()) {
-                return manufacturerTemp;
-            } else {
-                System.out.println("Производителя с такими параметрами нет в базе");
-                return null;
-            }
-        } else {
-            System.out.println("Производителя с таким названием нет в базе");
-            return null;
-        }
     }
 
     public Manufacturer addNewManufacture () {
@@ -61,24 +42,6 @@ public class Manufacturer implements Serializable {
 
     }
 
-    public void edit () {
-
-    }
-
-    public void viewAllManufacturer () {
-        ArrayList<Manufacturer> listManufacturerTemp = returnListManufacturer();
-        listManufacturerTemp.forEach(this::infoManufacturer);
-    }
-
-
-    public ArrayList<Manufacturer> returnListManufacturer () {
-        ArrayList<Manufacturer> list = new ArrayList<>();
-        CatalogManufacturer catalogManufacturerTemp = new CatalogManufacturer();
-        catalogManufacturerTemp.restore();
-        catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> list.add(manufacturer));
-        return list;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,32 +54,4 @@ public class Manufacturer implements Serializable {
     public int hashCode() {
         return Objects.hash(idManufacturer, manufacturerName, country);
     }
-
-    public Manufacturer(String idManufacturer, String manufacturerName, String country) {
-        this.idManufacturer = idManufacturer;
-        this.manufacturerName = manufacturerName;
-        this.country = country;
-    }
-
-    public void infoManufacturer (Manufacturer manufacturer){
-        System.out.printf("""
-                
-                Название производителя: %s
-                Страна: %s
-                
-                """,
-                manufacturer.getManufacturerName(),
-                manufacturer.getCountry()
-        );
-    }
-
-    public ArrayList<String> returnAllManufactureName (){
-        ArrayList<String> listTemp = new ArrayList<>();
-        returnListManufacturer().forEach(
-           manufacturer -> listTemp.add(manufacturer.getManufacturerName())
-        );
-        return listTemp;
-    }
-
-
 }

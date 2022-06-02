@@ -1,8 +1,5 @@
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Souvenirs implements Serializable {
@@ -31,7 +28,7 @@ public class Souvenirs implements Serializable {
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");
         this.price = Double.parseDouble(console.in("Укажите стоимость"));
-        this.manufacturer = new Manufacturer().returnObjectManufacturerForManufacturerName(console.in("Введите название производителя"));
+        this.manufacturer = new ManufacturerMethods().returnObjectManufacturerForManufacturerName(console.in("Введите название производителя"));
         this.idNameSouvenirs = this.getProductName();
         CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
         if (catalogSouvenirs.getCatalogSouvenirs().containsKey(this.getProductName())){
@@ -105,7 +102,7 @@ public class Souvenirs implements Serializable {
         Console console = new Console();
         String country = console.in("Необходимо указать название страны");
         System.out.printf("\nВ стране %s были произведены:\n", country);
-        new Manufacturer()
+        new ManufacturerMethods ()
                 .returnListManufacturer()
                 .stream()
                 .filter(s -> s.getCountry().equals(country))
@@ -119,7 +116,7 @@ public class Souvenirs implements Serializable {
         System.out.print("\nСписок производителей у которых есть цены на сувениры ниже указанной\n");
         returnListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.price < price)
-                .forEach(souvenirs -> new Manufacturer().infoManufacturer(souvenirs.getManufacturer()));
+                .forEach(souvenirs -> new ManufacturerMethods().infoManufacturer(souvenirs.getManufacturer()));
     }
 
     public void viewManufacturerSouvenirsTemp (Manufacturer manufacturer) {
@@ -154,5 +151,18 @@ public class Souvenirs implements Serializable {
         this.manufacturer = manufacturer;
         this.price = price;
         this.productionYear = productionYear;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Souvenirs souvenirs = (Souvenirs) o;
+        return Double.compare(souvenirs.price, price) == 0 && Objects.equals(idNameSouvenirs, souvenirs.idNameSouvenirs) && Objects.equals(productName, souvenirs.productName) && Objects.equals(manufacturer, souvenirs.manufacturer) && Objects.equals(productionYear, souvenirs.productionYear);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNameSouvenirs, productName, manufacturer, price, productionYear);
     }
 }
