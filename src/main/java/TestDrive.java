@@ -72,11 +72,10 @@ run();
                 souvenirs.addNewSouvenir();
                 break;
             case "2":
-                SouvenirsMethods souvenirsMethodTempEdite = new SouvenirsMethods();
                 Souvenirs souvenirsTemp = new ConcreteElement()
                         .searchConcreteSouvenir(console.in("Введите название сувенира"));
                 if (souvenirsTemp != null) {
-                    souvenirsTemp = souvenirsMethodTempEdite.editeSouvenirs(souvenirsTemp);
+                    souvenirsTemp = new Editor().editeSouvenirs(souvenirsTemp);
                    new CatalogSouvenirs().addElementCatalogSouvenirs(souvenirsTemp);
                 }
                 break;
@@ -90,7 +89,7 @@ run();
                 new ManufacturerMethods().viewInfoAllManufacturerSouvenirs();
                 break;
             case "6":
-                new SouvenirsMethods().country();
+                new InformerCountry().country();
                 break;
             case "7":
                 new SouvenirsMethods().price();
@@ -116,12 +115,12 @@ run();
                 break;
             case "11":
                 Manufacturer manufacturerTempDelete =
-                new ManufacturerMethods().returnObjectManufacturerForManufacturerName(
+                new ConcreteElement().returnObjectManufacturerForManufacturerName(
                      console.in("Введите название производителя")
                 );
                 if (manufacturerTempDelete != null) {
                     new CatalogSouvenirs().deleteManufactureSouvenirs(manufacturerTempDelete);
-                    new CatalogManufacturer().deleteManufacture(manufacturerTempDelete);
+                    new CatalogManufacturer().deleteElementCatalogManufacture(manufacturerTempDelete);
                 }
                 break;
             case "12":
@@ -129,11 +128,11 @@ run();
                 break;
             case "13":
            Manufacturer manufacturerTempEdite =
-                 new ManufacturerMethods()
+                 new ConcreteElement()
                          .returnObjectManufacturerForManufacturerName(
                          console.in("Введите имя производителя которого желаете отредактировать"));
                 if (manufacturerTempEdite != null){
-                manufacturerTempEdite = new ManufacturerMethods().editeManufacture(manufacturerTempEdite);
+                manufacturerTempEdite = new Editor().editeManufacture(manufacturerTempEdite);
                 new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
                 } else {
                     break;

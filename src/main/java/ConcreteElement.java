@@ -5,6 +5,26 @@ import java.util.ArrayList;
 
 public class ConcreteElement {
 
+
+    public Manufacturer returnObjectManufacturerForManufacturerName (String manufacturerName){
+        Manufacturer manufacturerTemp;
+        if ( new ArrayListNameElement().returnAllManufactureName().contains(manufacturerName)){
+            manufacturerTemp = new ArrayListElement().returnListManufacturer().stream()
+                    .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
+                    .findFirst()
+                    .get();
+            new ProductInfo().infoManufacturer(manufacturerTemp);
+            if (new Console().yesOrNo()) {
+                return manufacturerTemp;
+            } else {
+                return new ConcreteElement().concreteManufacturer(manufacturerName);
+            }
+        } else {
+            System.out.println("Производителя с таким названием нет в базе");
+            return null;
+        }
+    }
+
     public Manufacturer concreteManufacturer (String nameManufacturer) {
         int counter = 0;
         ArrayList<Manufacturer> listManufacturerTempConcreteManufacturer = new ArrayList<>();
@@ -33,7 +53,7 @@ public class ConcreteElement {
     public Souvenirs searchConcreteSouvenir (@NonNull String nameSouvenir) {
         int counter = 0;
         ArrayList<Souvenirs> souvenirsTempList = new ArrayList<>();
-        if (!new SouvenirsMethods().returnArrayListNameSouvenir(nameSouvenir).isEmpty()) {
+        if (!new ArrayListNameElement().returnArrayListNameSouvenir(nameSouvenir).isEmpty()) {
             new ArrayListElement().returnListSouvenirs().stream()
                     .filter(souvenirs -> souvenirs.getProductName().equals(nameSouvenir))
                     .forEach(souvenirsTempList::add);

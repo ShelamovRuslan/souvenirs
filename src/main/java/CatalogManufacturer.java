@@ -7,6 +7,7 @@ public class CatalogManufacturer extends Catalog implements Serializable {
     public HashMap<String, Manufacturer> getCatalogManufacturer() {
         return catalogManufacturer;
     }
+
     public CatalogManufacturer() {
         this.setFileName("catalogmanufacturer.dat");
 
@@ -17,6 +18,7 @@ public class CatalogManufacturer extends Catalog implements Serializable {
             this.catalogManufacturer = ((CatalogManufacturer) this.getCatalog()).getCatalogManufacturer();
         }
     }
+
     public void addElementCatalogManufacturer (Manufacturer manufacturer) {
         restore();
         if (this.catalogManufacturer.containsKey(manufacturer.getIdManufacturer())) {
@@ -27,7 +29,7 @@ public class CatalogManufacturer extends Catalog implements Serializable {
         save();
     }
 
-    public void deleteManufacture (Manufacturer manufacturer) {
+    public void deleteElementCatalogManufacture(Manufacturer manufacturer) {
       restore();
       this.catalogManufacturer.remove(manufacturer.getIdManufacturer());
       save();
