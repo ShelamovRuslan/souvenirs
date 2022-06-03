@@ -1,15 +1,14 @@
 import lombok.NonNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ManufacturerMethods {
     public void viewInfoAllManufacturer() {
-        new ManufacturerMethods().returnListManufacturer().forEach(manufacturerTemp-> {
-            new ManufacturerMethods().infoManufacturer(manufacturerTemp);
-            new SouvenirsMethods().returnListSouvenirs().stream()
+        new ArrayListElement().returnListManufacturer().forEach(manufacturerTemp-> {
+            new ProductInfo().infoManufacturer(manufacturerTemp);
+            new ArrayListElement().returnListSouvenirs().stream()
                     .filter(x-> x.getManufacturer().getManufacturerName().equals(manufacturerTemp.getManufacturerName()))
-                    .forEach(souvenirs -> new SouvenirsMethods().infoProduct(souvenirs));
+                    .forEach(souvenirs -> new ProductInfo().infoProduct(souvenirs));
         });
     }
     public void viewInfoAllManufacturerSouvenirs () {
@@ -18,16 +17,16 @@ public class ManufacturerMethods {
         Manufacturer manufacturerTemp;
         manufacturerTemp = new ManufacturerMethods().returnObjectManufacturerForManufacturerName(manufacturerName);
         new SouvenirsMethods().returnArrayListSouvenirsConcreteManufacture(manufacturerTemp)
-                .forEach(souvenirs ->  new SouvenirsMethods().infoProduct(souvenirs));
+                .forEach(souvenirs ->  new ProductInfo().infoProduct(souvenirs));
     }
     public void viewAllManufacturer () {
-        ArrayList<Manufacturer> listManufacturerTemp = new ManufacturerMethods().returnListManufacturer();
-        listManufacturerTemp.forEach(manufacturer ->  new ManufacturerMethods().infoManufacturer(manufacturer));
+        ArrayList<Manufacturer> listManufacturerTemp =new ArrayListElement().returnListManufacturer();
+        listManufacturerTemp.forEach(manufacturer ->  new ProductInfo().infoManufacturer(manufacturer));
     }
 
     public ArrayList<String> returnAllManufactureName (){
         ArrayList<String> listTemp = new ArrayList<>();
-        returnListManufacturer().forEach(
+        new ArrayListElement().returnListManufacturer().forEach(
                 manufacturer -> listTemp.add(manufacturer.getManufacturerName())
         );
         return listTemp;
@@ -36,15 +35,15 @@ public class ManufacturerMethods {
     public Manufacturer returnObjectManufacturerForManufacturerName (String manufacturerName){
         Manufacturer manufacturerTemp;
         if ( new ManufacturerMethods().returnAllManufactureName().contains(manufacturerName)){
-            manufacturerTemp = returnListManufacturer().stream()
+            manufacturerTemp = new ArrayListElement().returnListManufacturer().stream()
                     .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
                     .findFirst()
                     .get();
-            infoManufacturer(manufacturerTemp);
+            new ProductInfo().infoManufacturer(manufacturerTemp);
             if (new Console().yesOrNo()) {
                 return manufacturerTemp;
             } else {
-               return concreteManufacturer(manufacturerName);
+               return new ConcreteElement().concreteManufacturer(manufacturerName);
             }
         } else {
             System.out.println("Производителя с таким названием нет в базе");
@@ -52,29 +51,7 @@ public class ManufacturerMethods {
         }
     }
 
-    public Manufacturer concreteManufacturer (String nameManufacturer) {
-        int counter = 0;
-        ArrayList<Manufacturer> listManufacturerTempConcreteManufacturer = new ArrayList<>();
 
-        returnListManufacturer().stream()
-                .filter(manufacturer -> manufacturer.getManufacturerName().equals(nameManufacturer))
-                .forEach(listManufacturerTempConcreteManufacturer::add);
-
-
-        for ( ;counter < listManufacturerTempConcreteManufacturer.size(); counter++) {
-                System.out.printf("%s) ", counter + 1);
-                new ManufacturerMethods().infoManufacturer(listManufacturerTempConcreteManufacturer.get(counter));
-        }
-        System.out.printf("%s) Его нет в списке", counter  + 1);
-        Console console = new Console();
-        int answer = Integer.parseInt(console.in("\nВыберите что то из списка"));
-        if (answer == counter + 1){
-            System.out.println("Производителя с таким параметрами нет в базе");
-            return null;
-        } else {
-            return listManufacturerTempConcreteManufacturer.get(answer - 1);
-        }
-    }
 
     public Manufacturer editeManufacture (@NonNull Manufacturer manufacturer){
         Console console = new Console();
@@ -98,23 +75,7 @@ public class ManufacturerMethods {
         }
     }
 
-    public ArrayList<Manufacturer> returnListManufacturer () {
-        ArrayList<Manufacturer> list = new ArrayList<>();
-        CatalogManufacturer catalogManufacturerTemp = new CatalogManufacturer();
-        catalogManufacturerTemp.restore();
-        catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> list.add(manufacturer));
-        return list;
-    }
 
-    public void infoManufacturer (@NonNull Manufacturer manufacturer){
-        System.out.printf("""
-                
-                Название производителя: %s
-                Страна: %s
-                
-                """,
-                manufacturer.getManufacturerName(),
-                manufacturer.getCountry()
-        );
-    }
+
+
 }

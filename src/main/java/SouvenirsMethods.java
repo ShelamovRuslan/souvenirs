@@ -1,5 +1,4 @@
 import lombok.NonNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,20 +8,14 @@ import java.util.stream.Collectors;
 
 public class SouvenirsMethods {
     public void view() {
-        returnListSouvenirs().forEach(this::infoProduct);
+       new ArrayListElement().returnListSouvenirs().forEach(souvenirs -> new ProductInfo().infoProduct(souvenirs));
     }
 
-    public ArrayList<Souvenirs> returnListSouvenirs() {
-        ArrayList<Souvenirs> list = new ArrayList<>();
-        CatalogSouvenirs catalogSouvenirsTemp = new CatalogSouvenirs();
-        catalogSouvenirsTemp.restore();
-        catalogSouvenirsTemp.getCatalogSouvenirs().forEach((s, souvenirs) -> list.add(souvenirs));
-        return list;
-    }
+
 
     public ArrayList<Souvenirs> returnArrayListSouvenirsYear(String name, String year) {
         ArrayList<Souvenirs> listArrayList = new ArrayList<>();
-        returnListSouvenirs().stream()
+        new ArrayListElement().returnListSouvenirs().stream()
                 .filter(s -> s.getProductName().equals(name))
                 .filter(souvenirs -> souvenirs.getProductionYear().equals(year))
                 .forEach(listArrayList::add);
@@ -30,13 +23,13 @@ public class SouvenirsMethods {
     }
 
     public void viewAllSouvenirsGroupYear() {
-        ArrayList<Souvenirs> list = returnListSouvenirs();
+        ArrayList<Souvenirs> list = new ArrayListElement().returnListSouvenirs();
         Map<String, List<Souvenirs>> mapSouvenirs = list.stream().filter(s -> s.getPrice() != 0)
                 .collect(Collectors.groupingBy(Souvenirs::getProductionYear));
         Set<String> set = mapSouvenirs.keySet();
         set.forEach(s ->{
             System.out.printf("\nВ %s году были произведены:\n", mapSouvenirs.get(s).get(0).getProductionYear());
-            mapSouvenirs.get(s).forEach(c -> infoProduct(c));
+            mapSouvenirs.get(s).forEach(c -> new ProductInfo().infoProduct(c));
         });
     }
     public void price() {
@@ -44,20 +37,20 @@ public class SouvenirsMethods {
         String priceTemp = console.in("Укажите цену");
         double price = Double.parseDouble(priceTemp.replace(',','.'));
         System.out.print("\nСписок производителей у которых есть цены на сувениры ниже указанной\n");
-        returnListSouvenirs().stream()
+        new ArrayListElement().returnListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.getPrice() < price)
-                .forEach(souvenirs -> new ManufacturerMethods().infoManufacturer(souvenirs.getManufacturer()));
+                .forEach(souvenirs -> new ProductInfo().infoManufacturer(souvenirs.getManufacturer()));
     }
 
     public void viewManufacturerSouvenirsTemp (Manufacturer manufacturer) {
-        returnListSouvenirs().stream()
+        new ArrayListElement().returnListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.getManufacturer().equals(manufacturer))
-                .forEach(souvenirs ->  new SouvenirsMethods().infoProduct(souvenirs));
+                .forEach(souvenirs ->  new ProductInfo().infoProduct(souvenirs));
     }
 
     public ArrayList <Souvenirs> returnArrayListSouvenirsConcreteManufacture (Manufacturer manufacturer){
         ArrayList<Souvenirs> arrayListSouvenirsTemp = new ArrayList<>();
-        new SouvenirsMethods().returnListSouvenirs().stream()
+        new ArrayListElement().returnListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.getManufacturer().equals(manufacturer))
                 .forEach(arrayListSouvenirsTemp::add);
         return arrayListSouvenirsTemp;
@@ -67,30 +60,11 @@ public class SouvenirsMethods {
         Console console = new Console();
         String country = console.in("Необходимо указать название страны");
         System.out.printf("\nВ стране %s были произведены:\n", country);
-        new ManufacturerMethods ()
+        new ArrayListElement()
                 .returnListManufacturer()
                 .stream()
                 .filter(s -> s.getCountry().equals(country))
                 .forEach(this::viewManufacturerSouvenirsTemp);
-    }
-
-    public void infoProduct(@NonNull Souvenirs souvenirs) {
-        System.out.printf(
-                """
-                        
-                        Название сувенира: %s
-                        Год производства: %s
-                        Цена сувенира: %s
-                        Страна производства: %s
-                        Производитель: %s
-                        
-                        """,
-                souvenirs.getProductName(),
-                souvenirs.getProductionYear(),
-                souvenirs.getPrice(),
-                souvenirs.getManufacturer().getCountry(),
-                souvenirs.getManufacturer().getManufacturerName()
-        );
     }
 
     public Souvenirs editeSouvenirs (@NonNull Souvenirs souvenirs){
@@ -140,39 +114,12 @@ public class SouvenirsMethods {
     }
 
     */
-@Nullable
-    public Souvenirs searchConcreteSouvenir (@NonNull String nameSouvenir) {
-        int counter = 0;
-        ArrayList<Souvenirs> souvenirsTempList = new ArrayList<>();
-        if (!returnArrayListNameSouvenir(nameSouvenir).isEmpty()) {
-            new SouvenirsMethods().returnListSouvenirs().stream()
-                    .filter(souvenirs -> souvenirs.getProductName().equals(nameSouvenir))
-                    .forEach(souvenirsTempList::add);
-        } else {
-            System.out.println("Такого сувенира нет в списке");
-            return null;
-        }
 
-        for ( ;counter < souvenirsTempList.size(); counter++) {
-            System.out.printf("%s) ", counter + 1);
-            new SouvenirsMethods().infoProduct(souvenirsTempList.get(counter));
-        }
-        System.out.printf("%s) Его нет в списке", counter  + 1);
-        Console console = new Console();
-        int answer = Integer.parseInt(console.in("\nВыберите что то из списка"));
-        if (answer == counter + 1){
-            System.out.println("Сувенира с таким параметрами нет в базе");
-            return null;
-        } else {
-            return souvenirsTempList.get(answer - 1);
-        }
-
-    }
 
 @NonNull
     public ArrayList<String> returnArrayListNameSouvenir (@NonNull String nameSouvenir) {
         ArrayList<String> list = new ArrayList<>();
-       new SouvenirsMethods().returnListSouvenirs().stream()
+    new ArrayListElement().returnListSouvenirs().stream()
                .filter(souvenirs -> nameSouvenir.equals(souvenirs.getProductName()))
                .forEach(souvenirs ->  list.add(souvenirs.getProductName()));
        return list;

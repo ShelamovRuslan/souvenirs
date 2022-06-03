@@ -73,7 +73,7 @@ run();
                 break;
             case "2":
                 SouvenirsMethods souvenirsMethodTempEdite = new SouvenirsMethods();
-                Souvenirs souvenirsTemp = souvenirsMethodTempEdite
+                Souvenirs souvenirsTemp = new ConcreteElement()
                         .searchConcreteSouvenir(console.in("Введите название сувенира"));
                 if (souvenirsTemp != null) {
                     souvenirsTemp = souvenirsMethodTempEdite.editeSouvenirs(souvenirsTemp);
@@ -108,7 +108,7 @@ run();
                 } else {
                     System.out.println("Вот подходящие под данное описание сувениры:");
                     arrayListSouvenirsYear
-                            .forEach(souvenirsTempYear -> new SouvenirsMethods().infoProduct(souvenirsTempYear));
+                            .forEach(souvenirsTempYear -> new ProductInfo().infoProduct(souvenirsTempYear));
                 }
                 break;
             case "10":
