@@ -80,10 +80,10 @@ run();
                 }
                 break;
             case "3":
-                new ManufacturerMethods().viewAllManufacturer();
+                new InformerAllInfo().viewAllManufacturer();
                 break;
             case "4":
-                new SouvenirsMethods().view();
+                new InformerAllInfo().view();
                 break;
             case "5":
                 new ManufacturerMethods().viewInfoAllManufacturerSouvenirs();

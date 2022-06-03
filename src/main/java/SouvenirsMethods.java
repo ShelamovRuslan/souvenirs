@@ -7,9 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SouvenirsMethods {
-    public void view() {
-       new ArrayListElement().returnListSouvenirs().forEach(souvenirs -> new ProductInfo().infoProduct(souvenirs));
-    }
+
 
     public ArrayList<Souvenirs> returnArrayListSouvenirsYear(String name, String year) {
         ArrayList<Souvenirs> listArrayList = new ArrayList<>();
