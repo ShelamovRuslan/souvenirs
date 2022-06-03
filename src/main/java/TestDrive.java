@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class TestDrive {
 
     /**
@@ -86,32 +84,22 @@ run();
                 new InformerAllInfo().view();
                 break;
             case "5":
-                new ManufacturerMethods().viewInfoAllManufacturerSouvenirs();
+                new InformerManufacturerSouvenirs().viewInfoAllManufacturerSouvenirs();
                 break;
             case "6":
                 new InformerCountry().country();
                 break;
             case "7":
-                new SouvenirsMethods().price();
+                new Price().price();
                 break;
             case "8":
-                new ManufacturerMethods().viewInfoAllManufacturer();
+                new InformerAllManufacturerAndSouvenirs().viewInfoAllManufacturer();
                 break;
             case "9":
-                ArrayList<Souvenirs> arrayListSouvenirsYear =
-                new SouvenirsMethods().returnArrayListSouvenirsYear(
-                        console.in("Введите название сувенира"),
-                        console.in("Укажите год производства"));
-                if (arrayListSouvenirsYear.size() == 0 ){
-                    System.out.println("Под ваше описание ничего не подошло");
-                } else {
-                    System.out.println("Вот подходящие под данное описание сувениры:");
-                    arrayListSouvenirsYear
-                            .forEach(souvenirsTempYear -> new ProductInfo().infoProduct(souvenirsTempYear));
-                }
+                new ArrayListSouvenirsYear().Method();
                 break;
             case "10":
-                new SouvenirsMethods().viewAllSouvenirsGroupYear();
+                new AllSouvenirsGroupYear().viewAllSouvenirsGroupYear();
                 break;
             case "11":
                 Manufacturer manufacturerTempDelete =

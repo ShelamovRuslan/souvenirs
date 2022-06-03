@@ -36,7 +36,7 @@ public class CatalogSouvenirs extends Catalog implements Serializable {
     public void deleteManufactureSouvenirs (Manufacturer manufacturer) {
         restore();
         ArrayList<Souvenirs> list =
-        new SouvenirsMethods ().returnArrayListSouvenirsConcreteManufacture(manufacturer);
+        new ArrayListSouvenirsConcreteManufacture().returnArrayListSouvenirsConcreteManufacture(manufacturer);
         list.forEach(this::deleteConcreteSouvenirs);
         save();
     }
