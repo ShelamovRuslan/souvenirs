@@ -81,7 +81,7 @@ run();
                 new InformerAllInfo().viewAllManufacturer();
                 break;
             case "4":
-                new InformerAllInfo().view();
+                new InformerAllInfo().viewAllSouvenirs();
                 break;
             case "5":
                 new InformerManufacturerSouvenirs().viewInfoAllManufacturerSouvenirs();
