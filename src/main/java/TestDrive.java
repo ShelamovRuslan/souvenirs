@@ -1,9 +1,50 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import static java.util.concurrent.Executors.newFixedThreadPool;
+
 public class TestDrive {
 
     public static void main(String[] args) {
 
-        run();
 
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+
+        executorService.submit (TestDrive::addElement);
+        executorService.submit (TestDrive::addElement1);
+
+        executorService.shutdown();
+
+
+     /*   long start = System.currentTimeMillis();
+        new InformerAllInfo().viewAllSouvenirs();
+        long finish = System.currentTimeMillis();
+        System.out.println(finish - start);*/
+    }
+
+    public static void addElement() {
+        for (int i = 0; i < 250_000; i++) {
+            CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
+            Manufacturer manufacturer = new Manufacturer(i + "", i + "");
+            catalogManufacturer.addElementCatalogManufacturer(manufacturer);
+
+
+
+            System.out.println(i);
+
+        }
+    }
+    public static void addElement1() {
+
+        for (int i = 750_000; i < 1_000_000; i++) {
+            CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
+            Souvenirs souvenirs = new Souvenirs(i + "", new Manufacturer(i + 100_000_000 + "", i + 100_000_000 + ""), i, i + "");
+            catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
+
+            System.out.println(i);
+
+        }
     }
 
     public static void run() {
