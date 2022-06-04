@@ -19,6 +19,7 @@ public class ElementManufacturerToDelete {
         if (concreteManufacturer != null) {
             new CatalogSouvenirs().deleteManufactureSouvenirs(concreteManufacturer);
             new CatalogManufacturer().deleteElementCatalogManufacture(concreteManufacturer);
+            // Добавить ссылку на метод проверяющий наличие элемента в базе с развветвлением ифов
             return true;
         } else {
             return false;
