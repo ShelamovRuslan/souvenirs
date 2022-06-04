@@ -1,9 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 public class TestDrive {
@@ -118,7 +112,8 @@ public class TestDrive {
                     new AllSouvenirsGroupYear().viewAllSouvenirsGroupYear();
                     break;
                 case "11":
-                    new DeleteManufacturer().deleteManufacturer();
+                    new ElementManufacturerToDelete(new Console().in("Введите название производителя"))
+                            .deleteManufacturer();
                     break;
                 case "12":
                     new Manufacturer().addNewManufacture();
