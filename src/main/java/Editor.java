@@ -1,8 +1,30 @@
 import lombok.NonNull;
 
 public class Editor {
+  private Console console = new Console();
+
+    public void editeManufacture () {
+        Manufacturer manufacturerTempEdite =
+                new ConcreteElement()
+                        .returnObjectManufacturerForManufacturerName(
+                                console.in("Введите имя производителя которого желаете отредактировать"));
+        if (manufacturerTempEdite != null) {
+            manufacturerTempEdite = new Editor().editeManufacture(manufacturerTempEdite);
+            new CatalogManufacturer().addElementCatalogManufacturer(manufacturerTempEdite);
+        }
+    }
+
+public void editeSouvenirs (){
+    Souvenirs souvenirsTemp = new ConcreteElement()
+            .searchConcreteSouvenir(console.in("Введите название сувенира"));
+                if (souvenirsTemp != null) {
+        souvenirsTemp = new Editor().editeSouvenirs(souvenirsTemp);
+        new CatalogSouvenirs().addElementCatalogSouvenirs(souvenirsTemp);
+    }
+}
+
     public Manufacturer editeManufacture (@NonNull Manufacturer manufacturer){
-        Console console = new Console();
+
 
         int answer = Integer.parseInt( console.in ("""
                 Что именно вы желаете изменить:
@@ -25,7 +47,7 @@ public class Editor {
 
     public Souvenirs editeSouvenirs (@NonNull Souvenirs souvenirs){
 
-        Console console = new Console();
+
         int answer = Integer.parseInt( console.in("""
                 Какие именно изменения вы желаете внести?
                 1) Изменить название
