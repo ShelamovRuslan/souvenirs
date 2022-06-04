@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -7,44 +10,53 @@ public class TestDrive {
 
     public static void main(String[] args) {
 
+        run();
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+/*        String[] array = new String[1000];
+        Arrays.fill(array, 10);
+
+        new TestDrive().addElement();*/
+/*        HashMap<String, String> mapsID = new HashMap<>();
+        mapsID.put("3970", "4970");
 
 
-        executorService.submit (TestDrive::addElement);
-        executorService.submit (TestDrive::addElement1);
-
-        executorService.shutdown();
-
-
-     /*   long start = System.currentTimeMillis();
-        new InformerAllInfo().viewAllSouvenirs();
+     String one;
+        String two;
+        HashMap<String, Souvenirs> map = new CatalogSouvenirs().getCatalogSouvenirs();
+        ArrayList<Souvenirs> souvenirsList = new ArrayListElement().returnListSouvenirs();
+        long start = System.currentTimeMillis();
+        new ArrayListElement().returnListSouvenirs().stream()
+                .filter(souvenirs -> souvenirs.getProductName().equals("3970"))
+                .forEach(souvenirs -> System.out.println(souvenirs.getProductionYear()));
         long finish = System.currentTimeMillis();
-        System.out.println(finish - start);*/
+        System.out.println("1)" + (finish - start));
+
+        long start2 = System.currentTimeMillis();
+        System.out.println(new CatalogSouvenirs().getCatalogSouvenirs().get(mapsID.get("3970")).getProductionYear());
+        long finish2 = System.currentTimeMillis();
+        System.out.println("2)" + (finish2 - start2));*/
+
+
+
+
+
+
     }
 
-    public static void addElement() {
-        for (int i = 0; i < 250_000; i++) {
+    public Runnable addElement() {
+        for (int i = 6500; i < 100_000; i++) {
             CatalogManufacturer catalogManufacturer = new CatalogManufacturer();
             Manufacturer manufacturer = new Manufacturer(i + "", i + "");
             catalogManufacturer.addElementCatalogManufacturer(manufacturer);
-
-
-
-            System.out.println(i);
-
-        }
-    }
-    public static void addElement1() {
-
-        for (int i = 750_000; i < 1_000_000; i++) {
             CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
-            Souvenirs souvenirs = new Souvenirs(i + "", new Manufacturer(i + 100_000_000 + "", i + 100_000_000 + ""), i, i + "");
+            Souvenirs souvenirs = new Souvenirs(i + "", manufacturer, i, i + "");
             catalogSouvenirs.addElementCatalogSouvenirs(souvenirs);
 
+
             System.out.println(i);
 
         }
+        return null;
     }
 
     public static void run() {
