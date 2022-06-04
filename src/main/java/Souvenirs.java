@@ -66,9 +66,11 @@ public class Souvenirs implements Serializable {
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");
         this.price = Double.parseDouble(console.in("Укажите стоимость"));
-        Manufacturer manufacturerTempCreate = new ConcreteElement()
-                .returnObjectManufacturerForManufacturerName(
-                        console.in("Введите название производителя"));
+        ConcreteElementManufacturer concrete = new ConcreteElementManufacturer(
+                console.in("Введите название производителя"));
+        Manufacturer manufacturerTempCreate = concrete.getManufacturer();
+
+
         if (manufacturerTempCreate != null){
             this.manufacturer = manufacturerTempCreate;
         } else {
