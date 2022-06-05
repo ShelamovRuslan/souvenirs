@@ -47,8 +47,8 @@ public class Souvenirs implements Serializable {
         return manufacturer;
     }
 
-    public Souvenirs(String productName, Manufacturer manufacturer, double price, String productionYear) {
-        this.idNameSouvenirs = String.valueOf(new CatalogSouvenirs().getCatalogSouvenirs().size() + 1000);
+    public Souvenirs(String idNameSouvenirs, String productName, Manufacturer manufacturer, double price, String productionYear) {
+        this.idNameSouvenirs = idNameSouvenirs;
         this.productName = productName;
         this.manufacturer = manufacturer;
         this.price = price;

@@ -34,4 +34,10 @@ public class CatalogManufacturer extends Catalog implements Serializable {
       this.catalogManufacturer.remove(manufacturer.getIdManufacturer());
       save();
     }
+
+    public void addCatalogManufacturer (HashMap<String, Manufacturer> map) {
+        restore();
+        this.catalogManufacturer = map;
+        save();
+    }
 }

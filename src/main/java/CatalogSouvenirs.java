@@ -46,5 +46,9 @@ public class CatalogSouvenirs extends Catalog implements Serializable {
         save();
     }
 
-
+    public void addCatalogSouvenirs (HashMap<String, Souvenirs> map) {
+        restore();
+        this.catalogSouvenirs = map;
+        save();
+    }
 }

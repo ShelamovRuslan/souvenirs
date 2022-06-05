@@ -12,8 +12,8 @@ public class Manufacturer implements Serializable {
     public Manufacturer () {
 
     }
-    public Manufacturer(String manufacturerName, String country) {
-        this.idManufacturer = String.valueOf(new CatalogManufacturer().getCatalogManufacturer().size() + 1000);
+    public Manufacturer(String idNameSouvenirs, String manufacturerName, String country) {
+        this.idManufacturer = idNameSouvenirs;
         this.manufacturerName = manufacturerName;
         this.country = country;
     }
