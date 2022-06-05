@@ -1,38 +1,41 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 public class TestDrive {
 
     public static void main(String[] args) {
 
-        run();
-/*
+  /*      run();
+
      new TestDrive().addElement();
 
       String[] array = new String[1000];
         Arrays.fill(array, 10);
 
         new TestDrive().addElement();*/
-   /*       HashMap<String, String> mapsID = new HashMap<>();
-        mapsID.put("3970", "4970");
 
 
-     String one;
-        String two;
-        HashMap<String, Souvenirs> map = new CatalogSouvenirs().getCatalogSouvenirs();
-        ArrayList<Souvenirs> souvenirsList = new ArrayListElement().returnListSouvenirs();
+
+
+
         long start = System.currentTimeMillis();
-        new ArrayListElement().returnListSouvenirs().stream()
+        new ArrayListSouvenirs().getArrayListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.getProductName().equals("3970"))
                 .forEach(souvenirs -> System.out.println(souvenirs.getProductionYear()));
         long finish = System.currentTimeMillis();
         System.out.println("1) " + (finish - start));
 
         long start2 = System.currentTimeMillis();
+        HashMap<String, String> mapsID = new HashMap<>();
+        mapsID.put("3970", "4970");
+        new CatalogSouvenirs().getCatalogSouvenirs().get(4970);
         System.out.println(new CatalogSouvenirs().getCatalogSouvenirs().get(mapsID.get("3970")).getProductionYear());
         long finish2 = System.currentTimeMillis();
         System.out.println("2) " + (finish2 - start2));
 
-*/
+
      //   1) 514
     //    2) 248
 

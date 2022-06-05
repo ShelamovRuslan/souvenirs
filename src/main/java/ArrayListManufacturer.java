@@ -10,7 +10,7 @@ public class ArrayListManufacturer {
         catalogManufacturerTemp.getCatalogManufacturer().forEach((s, manufacturer) -> this.list.add(manufacturer));
     }
 
-    public ArrayList<Manufacturer> returnListManufacturer () {
+    public ArrayList<Manufacturer> getArrayListManufacturer () {
 
         return this.list;
     }

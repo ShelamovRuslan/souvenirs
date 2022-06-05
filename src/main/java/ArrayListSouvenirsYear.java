@@ -18,7 +18,7 @@ public class ArrayListSouvenirsYear {
  }
     public ArrayList<Souvenirs> returnArrayListSouvenirsYear(String name, String year) {
         ArrayList<Souvenirs> listArrayList = new ArrayList<>();
-        new ArrayListSouvenirs().returnListSouvenirs().stream()
+        new ArrayListSouvenirs().getArrayListSouvenirs().stream()
                 .filter(s -> s.getProductName().equals(name))
                 .filter(souvenirs -> souvenirs.getProductionYear().equals(year))
                 .forEach(listArrayList::add);

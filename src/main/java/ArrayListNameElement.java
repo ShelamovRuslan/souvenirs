@@ -7,7 +7,7 @@ public class ArrayListNameElement {
     @NonNull
     public ArrayList<String> returnArrayListNameSouvenir (@NonNull String nameSouvenir) {
         ArrayList<String> list = new ArrayList<>();
-        new ArrayListSouvenirs().returnListSouvenirs().stream()
+        new ArrayListSouvenirs().getArrayListSouvenirs().stream()
                 .filter(souvenirs -> nameSouvenir.equals(souvenirs.getProductName()))
                 .forEach(souvenirs ->  list.add(souvenirs.getProductName()));
         return list;
@@ -15,7 +15,7 @@ public class ArrayListNameElement {
 
     public ArrayList<String> returnAllManufactureName (){
         ArrayList<String> listTemp = new ArrayList<>();
-        new ArrayListManufacturer().returnListManufacturer().forEach(
+        new ArrayListManufacturer().getArrayListManufacturer().forEach(
                 manufacturer -> listTemp.add(manufacturer.getManufacturerName())
         );
         return listTemp;

@@ -10,7 +10,7 @@ public class ArrayListSouvenirs {
         catalogSouvenirsTemp.getCatalogSouvenirs().forEach((s, souvenirs) -> this.list.add(souvenirs));
     }
 
-    public ArrayList<Souvenirs> returnListSouvenirs() {
+    public ArrayList<Souvenirs> getArrayListSouvenirs() {
         return this.list;
     }
 }

@@ -19,7 +19,7 @@ public class ConcreteElementManufacturer{
     private void returnObjectManufacturerForManufacturerName () {
         Manufacturer manufacturerTemp;
         if ( new ArrayListNameElement().returnAllManufactureName().contains(manufacturerName)){
-            manufacturerTemp = new ArrayListManufacturer().returnListManufacturer().stream()
+            manufacturerTemp = new ArrayListManufacturer().getArrayListManufacturer().stream()
                     .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
                     .findFirst()
                     .get();
@@ -39,7 +39,7 @@ public class ConcreteElementManufacturer{
         int counter = 0;
         ArrayList<Manufacturer> listManufacturerTempConcreteManufacturer = new ArrayList<>();
 
-        new ArrayListManufacturer().returnListManufacturer().stream()
+        new ArrayListManufacturer().getArrayListManufacturer().stream()
                 .filter(manufacturer -> manufacturer.getManufacturerName().equals(this.manufacturerName))
                 .forEach(listManufacturerTempConcreteManufacturer::add);
 

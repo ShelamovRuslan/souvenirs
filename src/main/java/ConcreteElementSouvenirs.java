@@ -22,7 +22,7 @@ public class ConcreteElementSouvenirs{
     private void searchConcreteSouvenir () {
 
         if (!new ArrayListNameElement().returnArrayListNameSouvenir(nameSouvenir).isEmpty()) {
-            new ArrayListSouvenirs().returnListSouvenirs().stream()
+            new ArrayListSouvenirs().getArrayListSouvenirs().stream()
                     .filter(souvenirs -> souvenirs.getProductName().equals(nameSouvenir))
                     .forEach(souvenirsTempList::add);
         } else {
