@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class AllSouvenirsGroupYear {
     public void viewAllSouvenirsGroupYear() {
-        ArrayList<Souvenirs> list = new ArrayListElement().returnListSouvenirs();
+        ArrayList<Souvenirs> list = new ArrayListSouvenirs().returnListSouvenirs();
         Map<String, List<Souvenirs>> mapSouvenirs = list.stream().filter(s -> s.getPrice() != 0)
                 .collect(Collectors.groupingBy(Souvenirs::getProductionYear));
         Set<String> set = mapSouvenirs.keySet();

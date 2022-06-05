@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 public class ConcreteElementManufacturer{
-    private String manufacturerName;
+    private final String manufacturerName;
     private Manufacturer manufacturer;
 
     public ConcreteElementManufacturer(@NonNull String manufacturerName) {
@@ -19,7 +19,7 @@ public class ConcreteElementManufacturer{
     private void returnObjectManufacturerForManufacturerName () {
         Manufacturer manufacturerTemp;
         if ( new ArrayListNameElement().returnAllManufactureName().contains(manufacturerName)){
-            manufacturerTemp = new ArrayListElement().returnListManufacturer().stream()
+            manufacturerTemp = new ArrayListManufacturer().returnListManufacturer().stream()
                     .filter(manufacturer -> manufacturer.getManufacturerName().equals(manufacturerName))
                     .findFirst()
                     .get();
@@ -39,7 +39,7 @@ public class ConcreteElementManufacturer{
         int counter = 0;
         ArrayList<Manufacturer> listManufacturerTempConcreteManufacturer = new ArrayList<>();
 
-        new ArrayListElement().returnListManufacturer().stream()
+        new ArrayListManufacturer().returnListManufacturer().stream()
                 .filter(manufacturer -> manufacturer.getManufacturerName().equals(this.manufacturerName))
                 .forEach(listManufacturerTempConcreteManufacturer::add);
 

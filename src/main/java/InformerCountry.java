@@ -3,7 +3,7 @@ public class InformerCountry {
         Console console = new Console();
         String country = console.in("Необходимо указать название страны");
         System.out.printf("\nВ стране %s были произведены:\n", country);
-        new ArrayListElement()
+        new ArrayListManufacturer()
                 .returnListManufacturer()
                 .stream()
                 .filter(s -> s.getCountry().equals(country))
@@ -11,7 +11,7 @@ public class InformerCountry {
     }
 
     public void viewManufacturerSouvenirsTemp (Manufacturer manufacturer) {
-        new ArrayListElement().returnListSouvenirs().stream()
+        new ArrayListSouvenirs().returnListSouvenirs().stream()
                 .filter(souvenirs -> souvenirs.getManufacturer().equals(manufacturer))
                 .forEach(souvenirs ->  new ProductInfo().infoProduct(souvenirs));
     }

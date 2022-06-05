@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class ConcreteElementSouvenirs{
       private int counter = 0;
-      private ArrayList<Souvenirs> souvenirsTempList = new ArrayList<>();
+      private final ArrayList<Souvenirs> souvenirsTempList = new ArrayList<>();
       private Souvenirs concreteSouvenir;
-      private String nameSouvenir;
+      private final String nameSouvenir;
 
     public ConcreteElementSouvenirs(@NonNull String nameSouvenir) {
         this.nameSouvenir = nameSouvenir;
@@ -22,7 +22,7 @@ public class ConcreteElementSouvenirs{
     private void searchConcreteSouvenir () {
 
         if (!new ArrayListNameElement().returnArrayListNameSouvenir(nameSouvenir).isEmpty()) {
-            new ArrayListElement().returnListSouvenirs().stream()
+            new ArrayListSouvenirs().returnListSouvenirs().stream()
                     .filter(souvenirs -> souvenirs.getProductName().equals(nameSouvenir))
                     .forEach(souvenirsTempList::add);
         } else {
