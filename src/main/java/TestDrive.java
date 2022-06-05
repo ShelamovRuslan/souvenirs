@@ -5,7 +5,9 @@ public class TestDrive {
 
     public static void main(String[] args) {
 
-        ArrayList<Souvenirs> list = new ArrayListSouvenirs().getArrayListSouvenirs();
+       new NewCatalogSouvenirs();
+
+      /*  ArrayList<Souvenirs> list = new ArrayListSouvenirs().getArrayListSouvenirs();
         long start = System.currentTimeMillis();
         list.stream().filter(souvenirs -> souvenirs.getProductName().equals("2351608"))
                 .forEach(souvenirs -> System.out.println(souvenirs.getProductName()));
@@ -17,7 +19,7 @@ public class TestDrive {
         long start2 = System.currentTimeMillis();
         System.out.println(catalogSouvenirs.getCatalogSouvenirs().get("2351608").getProductName());
         long finish2 = System.currentTimeMillis();
-        System.out.println("2) " + (finish2 - start2));
+        System.out.println("2) " + (finish2 - start2));*/
 
 
 /*        long start = System.currentTimeMillis();
