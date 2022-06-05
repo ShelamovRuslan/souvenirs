@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class CatalogManufacturer extends Catalog implements Serializable {
-    HashMap<String, Manufacturer> catalogManufacturer;
+     HashMap<String, Manufacturer> catalogManufacturer;
     public HashMap<String, Manufacturer> getCatalogManufacturer() {
         return catalogManufacturer;
     }

@@ -1,27 +1,53 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TestDrive {
 
     public static void main(String[] args) {
 
-        Facade facade = new Facade();
-        facade.startProgram();
-
-    /*    run();
-          String[] array = new String[1000];
-        Arrays.fill(array, 10);
-        new TestDrive().addElement();
+        ArrayList<Souvenirs> list = new ArrayListSouvenirs().getArrayListSouvenirs();
         long start = System.currentTimeMillis();
-        new ArrayListSouvenirs().getArrayListSouvenirs().stream()
-                .filter(souvenirs -> souvenirs.getProductName().equals("3970"))
+        list.stream().filter(souvenirs -> souvenirs.getProductName().equals("2351608"))
                 .forEach(souvenirs -> System.out.println(souvenirs.getProductName()));
         long finish = System.currentTimeMillis();
+        System.out.println("1) " + (finish - start));
+
+        CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
+        catalogSouvenirs.restore();
+        long start2 = System.currentTimeMillis();
+        System.out.println(catalogSouvenirs.getCatalogSouvenirs().get("2351608").getProductName());
+        long finish2 = System.currentTimeMillis();
+        System.out.println("2) " + (finish2 - start2));
+
+
+/*        long start = System.currentTimeMillis();
+        new ArrayListSouvenirs().getArrayListSouvenirs().stream()
+                .filter(souvenirs -> souvenirs.getProductName().equals("2351608"))
+                .forEach(souvenirs -> System.out.println(souvenirs.getProductName()));
+        long finish = System.currentTimeMillis();
+
         System.out.println("1) " + (finish - start));
         long start2 = System.currentTimeMillis();
         CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
         catalogSouvenirs.restore();
-        System.out.println(catalogSouvenirs.getCatalogSouvenirs().get("99_999_999").getProductName());
+        System.out.println(catalogSouvenirs.getCatalogSouvenirs().get("2351608").getProductName());
         long finish2 = System.currentTimeMillis();
-        System.out.println("2) " + (finish2 - start2));
+        System.out.println("2) " + (finish2 - start2));*/
+
+       /*  Facade facade = new Facade();
+        facade.startProgram();
+
+         ArrayList<Souvenirs> souvenirs = new ArrayListSouvenirs().getArrayListSouvenirs();
+        new Editor().editeSouvenirs();
+
+
+
+        System.out.println();
+      run();
+          String[] array = new String[1000];
+        Arrays.fill(array, 10);
+        new TestDrive().addElement();
+
 
 
      //   1) 514
