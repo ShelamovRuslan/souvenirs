@@ -19,7 +19,7 @@ public  class  NewCatalogSouvenirs {
     }
 
     private void setFileName() {
-        this.fileName = year + month + ".dat";
+        this.fileName = this.year + this.month + ".dat";
     }
 
 
@@ -29,7 +29,7 @@ public  class  NewCatalogSouvenirs {
         this.month = LocalDateTime.now().getMonthValue();
 
 
-        for (; this.year > -4000; this.year--) {
+        for (; this.year > 1800; this.year--) {
             for (this.month = 12; this.month > 0; this.month--) {
                 setFileName();
                 restore();
@@ -37,16 +37,14 @@ public  class  NewCatalogSouvenirs {
         }
     }
 
-
-
     private void restore () {
         if (!new File(this.fileName).exists()) {
-            return;
+            NewCatalogSouvenirs.catalogSouvenirs.put("" + this.year + this.month , new ArrayList<Souvenirs>());
         } else {
             try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(this.fileName))) {
 
                 NewCatalogSouvenirs.catalogSouvenirs.put(
-                        String.valueOf(this.year),(ArrayList<Souvenirs>) stream.readObject());
+                        String.valueOf( this.year + this.month),(ArrayList<Souvenirs>) stream.readObject());
 
             } catch (IOException e) {
                 System.out.printf("В файле %s ошибка", this.fileName);

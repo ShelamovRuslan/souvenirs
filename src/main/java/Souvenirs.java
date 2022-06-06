@@ -74,6 +74,7 @@ public class Souvenirs implements Serializable {
         Console console = new Console();
         this.productName = console.in("Необходимо указать название сувенира");
         this.productionYear = console.in("Введите год производства");
+        this.productionMonth = console.in("Введите месяц производства");
         this.price = Double.parseDouble(console.in("Укажите стоимость"));
         ConcreteElementManufacturer concrete = new ConcreteElementManufacturer(
                 console.in("Введите название производителя"));
@@ -85,9 +86,8 @@ public class Souvenirs implements Serializable {
         } else {
            this.manufacturer = new Manufacturer().addNewManufacture();
         }
-        CatalogSouvenirs catalogSouvenirs = new CatalogSouvenirs();
-        this.idNameSouvenirs = String.valueOf(catalogSouvenirs.getCatalogSouvenirs().size());
-        catalogSouvenirs.addElementCatalogSouvenirs(this);
+
+        new SaveCatalogSouvenirs(this).addElementCatalog();
     }
 
 

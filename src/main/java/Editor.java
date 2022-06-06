@@ -20,7 +20,7 @@ public void editeSouvenirs (){
 
     if (souvenirsTemp != null) {
     souvenirsTemp = new Editor().editeSouvenirs(souvenirsTemp);
-    new CatalogSouvenirs().addElementCatalogSouvenirs(souvenirsTemp);
+    new SaveCatalogSouvenirs(souvenirsTemp).addElementCatalog();
     }
 }
 

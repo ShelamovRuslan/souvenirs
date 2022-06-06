@@ -9,8 +9,12 @@ public class SaveCatalogSouvenirs {
     private ArrayList<Souvenirs> listSouvenirs;
     private Souvenirs addSouvenirs;
 
-    public void setAddElementCatalog (Souvenirs souvenirs) {
+    private void setAddElementCatalog (Souvenirs souvenirs) {
         this.addSouvenirs = souvenirs;
+    }
+
+    public SaveCatalogSouvenirs(Souvenirs souvenirs) {
+        setAddElementCatalog(souvenirs);
     }
 
     public void addElementCatalog () {
@@ -19,15 +23,14 @@ public class SaveCatalogSouvenirs {
       this.fileName = this.year + this.month + ".dat";
 
       this.listSouvenirs = NewCatalogSouvenirs.getCatalogSouvenirs().get(this.year + this.month);
-
+      this.listSouvenirs.add(this.addSouvenirs);
+      snapShot();
     }
-
-
 
 
     private void snapShot () {
         try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(this.fileName))) {
-            stream.writeObject(this);
+            stream.writeObject(this.listSouvenirs);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
