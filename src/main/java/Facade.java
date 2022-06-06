@@ -70,6 +70,9 @@ public class Facade {
                 case "14":
                     this.closedProgram = true;
                     break;
+                case "15":
+                    System.out.println(TestDrive.x);
+                    break;
             }
         }
     }

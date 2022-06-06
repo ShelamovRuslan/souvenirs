@@ -3,9 +3,12 @@ import java.util.HashMap;
 
 public class TestDrive {
 
+    static String x = "String";
+
     public static void main(String[] args) {
 
-       new NewCatalogSouvenirs();
+
+       new Facade().startProgram();
 
       /*  ArrayList<Souvenirs> list = new ArrayListSouvenirs().getArrayListSouvenirs();
         long start = System.currentTimeMillis();

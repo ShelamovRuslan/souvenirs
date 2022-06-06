@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NewCatalogSouvenirs {
+public  class  NewCatalogSouvenirs {
 
     private static HashMap<String, ArrayList<Souvenirs>> catalogSouvenirs = new HashMap<>();
 
@@ -14,9 +14,14 @@ public class NewCatalogSouvenirs {
     private int year;
     private int month;
 
+    public synchronized static void setCatalogSouvenirs (HashMap<String, ArrayList<Souvenirs>> catalogSouvenirs) {
+        NewCatalogSouvenirs.catalogSouvenirs = catalogSouvenirs;
+    }
+
     private void setFileName() {
         this.fileName = year + month + ".dat";
     }
+
 
     public void restoreCatalog () {
 
@@ -39,9 +44,10 @@ public class NewCatalogSouvenirs {
             return;
         } else {
             try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(this.fileName))) {
+
                 NewCatalogSouvenirs.catalogSouvenirs.put(
                         String.valueOf(this.year),(ArrayList<Souvenirs>) stream.readObject());
-                setFileName();
+
             } catch (IOException e) {
                 System.out.printf("В файле %s ошибка", this.fileName);
                 return;
