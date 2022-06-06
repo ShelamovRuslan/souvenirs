@@ -31,6 +31,16 @@ public class NewCatalog {
         }
     }
     private void rest () {
-
+        if (!new File(this.fileName).exists()) {
+            this.setCatalog(new Catalog());
+        } else {
+            try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(this.fileName))) {
+                this.setCatalog((Catalog) stream.readObject());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

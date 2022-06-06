@@ -10,6 +10,7 @@ public class Souvenirs implements Serializable {
     private Manufacturer manufacturer;
     private double price;
     private String productionYear;
+    private String productionMonth;
 
     public String getProductName() {
         return productName;
@@ -17,6 +18,14 @@ public class Souvenirs implements Serializable {
 
     public Souvenirs() {
 
+    }
+
+    public void setProductionMonth(String productionMonth) {
+        this.productionMonth = productionMonth;
+    }
+
+    public String getProductionMonth() {
+        return productionMonth;
     }
 
     public void setProductName(String productName) {
